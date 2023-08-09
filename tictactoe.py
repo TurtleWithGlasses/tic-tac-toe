@@ -43,8 +43,20 @@ class TicTacToe(tk.Tk):
         self.Board()
 
 
-    def Check_Results(self):
-        pass
+    def Check_Results(self, char):
+        if (((self.buttons[0][0]["text"] == char) and (self.buttons[0][1]["text"] == char) and (self.buttons[0][2]["text"] == char)) or
+            ((self.buttons[1][0]["text"] == char) and (self.buttons[1][1]["text"] == char) and (self.buttons[1][2]["text"] == char)) or
+            ((self.buttons[2][0]["text"] == char) and (self.buttons[2][1]["text"] == char) and (self.buttons[2][2]["text"] == char)) or
+            ((self.buttons[0][0]["text"] == char) and (self.buttons[1][0]["text"] == char) and (self.buttons[2][0]["text"] == char)) or
+            ((self.buttons[0][1]["text"] == char) and (self.buttons[1][1]["text"] == char) and (self.buttons[2][1]["text"] == char)) or
+            ((self.buttons[0][2]["text"] == char) and (self.buttons[1][2]["text"] == char) and (self.buttons[2][2]["text"] == char)) or
+            ((self.buttons[0][0]["text"] == char) and (self.buttons[1][1]["text"] == char) and (self.buttons[2][2]["text"] == char)) or
+            ((self.buttons[0][2]["text"] == char) and (self.buttons[2][0]["text"] == char) and (self.buttons[1][1]["text"] == char))):
+            self.Result(char)
+        elif self.count == 9:
+            self.Result("Draw")
+
+
 
 
 TicTacToe().mainloop()
