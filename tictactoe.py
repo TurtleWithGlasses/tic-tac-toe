@@ -26,16 +26,21 @@ class TicTacToe(tk.Tk):
         self.count += 1
         if self.turn:
             char = "X"
-            self.buttons[x][y].config(text="X", bg="red", state="disabled")
+            self.buttons[x][y].config(text="X", bg="black", state="disabled")
         else:
             char = "O"
-            self.buttons[x][y].config(text="O", bg="red", state="disabled")
+            self.buttons[x][y].config(text="O", bg="light gray", state="disabled")
         self.Check_Results(char)
         self.turn = not self.turn
 
 
     def New_Game(self):
-        pass
+        for widget in self.winfo_children():
+            widget.destroy()
+        self.buttons = []
+        self.turn = True
+        self.count = 0
+        self.Board()
 
 
     def Check_Results(self):
