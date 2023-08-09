@@ -22,7 +22,24 @@ class TicTacToe(tk.Tk):
                   bg="black", fg="gray", activeforeground="white", activebackground="blue",
                   command=self.New_Game).grid(row=3, column=1)
 
+    def Turn_Taken(self, x, y):
+        self.count += 1
+        if self.turn:
+            char = "X"
+            self.buttons[x][y].config(text="X", bg="red", state="disabled")
+        else:
+            char = "O"
+            self.buttons[x][y].config(text="O", bg="red", state="disabled")
+        self.Check_Results(char)
+        self.turn = not self.turn
 
+
+    def New_Game(self):
+        pass
+
+
+    def Check_Results(self):
+        pass
 
 
 TicTacToe().mainloop()
