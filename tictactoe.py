@@ -33,7 +33,6 @@ class TicTacToe(tk.Tk):
         self.Check_Results(char)
         self.turn = not self.turn
 
-
     def New_Game(self):
         for widget in self.winfo_children():
             widget.destroy()
@@ -41,7 +40,6 @@ class TicTacToe(tk.Tk):
         self.turn = True
         self.count = 0
         self.Board()
-
 
     def Check_Results(self, char):
         if (((self.buttons[0][0]["text"] == char) and (self.buttons[0][1]["text"] == char) and (self.buttons[0][2]["text"] == char)) or
@@ -56,7 +54,19 @@ class TicTacToe(tk.Tk):
         elif self.count == 9:
             self.Result("Draw")
 
+    def Result(self, char):
+        top = tk.Toplevel(self)
+        if char == "Draw":
+            top.title("Draw!")
+            top_text = tk.Label(top, text="Game is a draw", font="Arial 30 bold", fg="blue")
+        else:
+            top.title("Congratulations!")
+            top_text = tk.Label(top, text=f"{char} has won the game!", font="Arial 20 bold", fg="blue")
 
+        top_button = tk.Button(top, text="New Game", bg="black", fg="white", activebackground="blue", activeforeground="green", command=self.New_Game)
+
+        top_text.grid(row=0, column=0, padx=10, pady=19)
+        top_button.grid(row=1, column=0)
 
 
 TicTacToe().mainloop()
